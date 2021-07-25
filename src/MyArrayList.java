@@ -19,10 +19,10 @@ public class MyArrayList<T> {
     } //добавляет элемент в конец
 
     public void remove(int index) {
-        for (int i = index; i < size()-1; i++) {
-            elements[i] = elements[i+1];
+        for (int i = index; i < size() - 1; i++) {
+            elements[i] = elements[i + 1];
         }
-        this.elements = Arrays.copyOf(elements, size()-1);
+        this.elements = Arrays.copyOf(elements, size() - 1);
         current--;
     } //удаляет элемент под индексом
 
@@ -44,8 +44,5 @@ public class MyArrayList<T> {
         for (int i = 0; i < size(); i++) {
             System.out.print(elements[i] + " ");
         }
-        ;
     }
-
-
 }

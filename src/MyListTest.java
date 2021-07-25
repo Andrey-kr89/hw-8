@@ -33,20 +33,34 @@ public class MyListTest {
 //        System.out.println(li.get(5));
 //        System.out.println(li.size());
 
-        MyQueue<String> qu = new MyQueue<>();
-        qu.add("zero");
-        qu.add("first");
-        qu.add("second");
-        qu.add("third");
-        qu.add("fourth");
-        qu.add("fifth");
-        qu.add("sixth");
-        qu.print();
+//        MyQueue<String> qu = new MyQueue<>();
+//        qu.add("zero");
+//        qu.add("first");
+//        qu.add("second");
+//        qu.add("third");
+//        qu.add("fourth");
+//        qu.add("fifth");
+//        qu.add("sixth");
+//        qu.print();
+//        System.out.println();
+//        System.out.println(qu.poll());
+//        qu.print();
+//        System.out.println();
+//        System.out.println(qu.peek());
+//
+        MyStack<String> st = new MyStack<>();
+        st.add("zero");
+        st.add("first");
+        st.add("second");
+        st.add("third");
+        st.add("fourth");
+        st.add("fifth");
+        st.add("sixth");
+        st.print();
         System.out.println();
-        System.out.println(qu.poll());
-        qu.print();
+        System.out.println(st.pop());
+        st.print();
         System.out.println();
-        System.out.println(qu.peek());
-
+        System.out.println(st.peek());
     }
 }

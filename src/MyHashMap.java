@@ -1,10 +1,11 @@
+import java.util.HashMap;
 import java.util.Objects;
 
 public class MyHashMap<K, V> {
     private final Node[] arr;
 
-    private Node <K, V>tail;
-    private Node <K, V> pr;
+    private Node<K, V> tail;
+    private Node<K, V> pr;
     private final int size = 4;
     private int collSize = 0;
 
@@ -38,25 +39,26 @@ public class MyHashMap<K, V> {
     }
 
     Object get(K key) {
-        int index =getIndex(key);
+        int index = getIndex(key);
         Node<K, V> found = arr[index];
-        do {
-            if (found.key.equals(key)) {
-                return found.value;
-            } else {
-                found = found.next;
-            }
-        } while (found != null);
+        if (arr[index] != null) {
+            do {
+                if (found.key.equals(key)) {
+                    return found.value;
+                } else {
+                    found = found.next;
+                }
+            } while (found != null);
+        }
         return "not found";
     }
 
-    void remove (K key) {
+    void remove(K key) {
         int index = getIndex(key);
         Node<K, V> found = arr[index];
-        Node<K,V> current = null;
-        do {
+        System.out.println(arr[index].value);
+        System.out.println(index);
 
-        } while (found != null);
         collSize--;
     }
 
@@ -71,19 +73,21 @@ public class MyHashMap<K, V> {
                     if (pr == null) {
                         System.out.print("}");
                         System.out.println();
-                    };
+                    }
+                    ;
                 } while (pr != null);
             } else System.out.println("Null }");
         }
     }
-    private int getIndex(K key){
-        int hash = Objects.hash(key);
+
+    private int getIndex(K key) {
+        int hash = Objects.hashCode(key);
         int index = hash & size - 1;
         return index;
     }
 
     static class Node<K, V> {
-        final K key;
+        K key;
         V value;
         int hash;
         Node<K, V> next;

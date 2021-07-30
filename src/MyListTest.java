@@ -58,19 +58,22 @@ public class MyListTest {
 //        System.out.println();
 //        System.out.println(st.peek());
         MyHashMap<String, Integer> ha = new MyHashMap<>();
-        ha.put("123", 11);
-        ha.put("weewfwweewfw", 12);
-        ha.put("wee21133121w", 13);
-        ha.put("123", 12);
-        ha.put("weewfwweewfw", 44);
-        ha.put("32", 32);
-        ha.put("e", 23);
-        ha.put("32", 144);
-        System.out.println(ha.get("32"));
-        System.out.println(ha.get("e"));
+        ha.put("first", 11);
+        ha.put("first", 11221);
+        ha.put("second", 12);
+        ha.put("fourth", 13);
+        ha.put("fourth", 1312);
+        ha.put("fifth", 14);
+        ha.put("sixth", 15);
+        ha.put("eights", 16);
+        ha.put("fourth", 1312);
+        ha.put("nine", 17);
+        ha.put("nine", 18);
+        System.out.println(ha.get("nine"));
+        System.out.println(ha.get("first"));
         ha.print();
         System.out.println();
-        ha.remove("weewfwweewfw");
+        ha.remove("second");
         ha.print();
 
     }

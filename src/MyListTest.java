@@ -1,8 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class MyListTest {
     public static void main(String[] args) {
 
@@ -52,15 +47,31 @@ public class MyListTest {
         st.add("zero");
         st.add("first");
         st.add("second");
-        st.add("third");
-        st.add("fourth");
-        st.add("fifth");
-        st.add("sixth");
-        st.print();
+//        st.add("third");
+//        st.add("fourth");
+//        st.add("fifth");
+//        st.add("sixth");
+//        st.print();
+//        System.out.println();
+//        System.out.println(st.pop());
+//        st.print();
+//        System.out.println();
+//        System.out.println(st.peek());
+        MyHashMap<String, Integer> ha = new MyHashMap<>();
+        ha.put("123", 11);
+        ha.put("weewfwweewfw", 12);
+        ha.put("wee21133121w", 13);
+        ha.put("123", 12);
+        ha.put("weewfwweewfw", 44);
+        ha.put("32", 32);
+        ha.put("e", 23);
+        ha.put("32", 144);
+        System.out.println(ha.get("32"));
+        System.out.println(ha.get("e"));
+        ha.print();
         System.out.println();
-        System.out.println(st.pop());
-        st.print();
-        System.out.println();
-        System.out.println(st.peek());
+        ha.remove("weewfwweewfw");
+        ha.print();
+
     }
 }

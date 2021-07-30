@@ -86,7 +86,7 @@ public class MyLinkedList<T> {
         }
     }
 
-    class Node<T> {
+   static class Node<T> {
         T value;
         Node<T> next;
         Node<T> previous;

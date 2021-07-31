@@ -6,7 +6,7 @@ public class MyHashMap<K, V> {
 
     private Node<K, V> tail;
     private Node<K, V> pr;
-    private final int size = 4;
+    private final int size = 16;
     private int collSize = 0;
 
     public MyHashMap() {
@@ -14,7 +14,9 @@ public class MyHashMap<K, V> {
     }
 
     void put(K key, V value) {
-        int hash = Objects.hash(key);
+        int hash =0;
+        hash ^= (Objects.hashCode(key) >>> 20) ^ (Objects.hashCode(key) >>> 12);
+        hash ^= (hash >>> 7) ^ (hash >>> 4);
         int index = getIndex(key);
         if (arr[index] == null) {
             arr[index] = new Node<>(key, value, hash, null);
@@ -55,16 +57,21 @@ public class MyHashMap<K, V> {
 
     void remove(K key) {
         int index = getIndex(key);
-        Node<K, V> found = arr[index];
+        Node toRemove = arr[index];
         System.out.println(arr[index].value);
         System.out.println(index);
+        if (toRemove.next == null & toRemove.key.equals(key)) {
+            toRemove.key = null;
+            toRemove.value = null;
+        } else {
 
+        }
         collSize--;
     }
 
     public void print() {
         for (int i = 0; i < size; i++) {
-            System.out.print("{  ");
+            System.out.print("{");
             if (arr[i] != null) {
                 pr = arr[i];
                 do {
@@ -72,17 +79,21 @@ public class MyHashMap<K, V> {
                     pr = pr.next;
                     if (pr == null) {
                         System.out.print("}");
-                        System.out.println();
+                        System.out.print("   ");
                     }
                     ;
                 } while (pr != null);
-            } else System.out.println("Null }");
+            } else System.out.print("Null }  ");
+
         }
+        System.out.println();
     }
 
     private int getIndex(K key) {
         int hash = Objects.hashCode(key);
-        int index = hash & size - 1;
+        hash ^= (Objects.hashCode(key) >>> 20) ^ (Objects.hashCode(key) >>> 12);
+        hash ^= (hash >>> 7) ^ (hash >>> 4);
+        int index = hash & (size - 1);
         return index;
     }
 

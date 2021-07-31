@@ -43,10 +43,10 @@ public class MyListTest {
 //        System.out.println();
 //        System.out.println(qu.peek());
 //
-        MyStack<String> st = new MyStack<>();
-        st.add("zero");
-        st.add("first");
-        st.add("second");
+//        MyStack<String> st = new MyStack<>();
+//        st.add("zero");
+//        st.add("first");
+//        st.add("second");
 //        st.add("third");
 //        st.add("fourth");
 //        st.add("fifth");
@@ -57,24 +57,25 @@ public class MyListTest {
 //        st.print();
 //        System.out.println();
 //        System.out.println(st.peek());
-        MyHashMap<String, Integer> ha = new MyHashMap<>();
-        ha.put("first", 11);
-        ha.put("first", 11221);
-        ha.put("second", 12);
-        ha.put("fourth", 13);
-        ha.put("fourth", 1312);
-        ha.put("fifth", 14);
-        ha.put("sixth", 15);
-        ha.put("eights", 16);
-        ha.put("fourth", 1312);
-        ha.put("nine", 17);
-        ha.put("nine", 18);
-        System.out.println(ha.get("nine"));
-        System.out.println(ha.get("first"));
+        MyHashMap<Integer, Integer> ha = new MyHashMap<>();
+        ha.put(1, 11);
+        ha.put(2, 11221);
+        ha.put(3, 12);
+        ha.put(4, 13);
+        ha.put(5, 1312);
+        ha.put(5, 14);
+        ha.put(6, 15);
+        ha.put(6351, 16);
+        ha.put(3, 1312);
+        ha.put(9, 17);
+        ha.put(9, 18);
+        System.out.println(ha.get(1));
+        System.out.println(ha.get(9));
         ha.print();
-        System.out.println();
-        ha.remove("second");
+        ha.remove(1);
+        ha.remove(3133);
         ha.print();
+
 
     }
 }

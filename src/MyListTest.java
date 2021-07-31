@@ -77,6 +77,7 @@ public class MyListTest {
         System.out.println("collection size is " + ha.size());
         ha.print();
         ha.put(88, 17);
+        ha.clear();
         ha.print();
 
 

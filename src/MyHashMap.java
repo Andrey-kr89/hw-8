@@ -80,6 +80,11 @@ public class MyHashMap<K, V> {
     public int size() {
         return collSize;
     }
+    public void clear() {
+        for (int i = 0; i < collSize; i++) {
+            arr[i] = null;
+        };
+    }
 
     public void print() {
         for (int i = 0; i < arrsize; i++) {

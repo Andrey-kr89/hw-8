@@ -6,20 +6,18 @@ public class MyHashMap<K, V> {
 
     private Node<K, V> tail;
     private Node<K, V> pr;
-    private final int size = 16;
+    private final int arrsize = 8;
     private int collSize = 0;
 
     public MyHashMap() {
-        arr = new Node[size];
+        arr = new Node[arrsize];
     }
 
     void put(K key, V value) {
-        int hash =0;
-        hash ^= (Objects.hashCode(key) >>> 20) ^ (Objects.hashCode(key) >>> 12);
-        hash ^= (hash >>> 7) ^ (hash >>> 4);
         int index = getIndex(key);
+
         if (arr[index] == null) {
-            arr[index] = new Node<>(key, value, hash, null);
+            arr[index] = new Node<K, V>(key, value, null);
             tail = arr[index];
             collSize++;
         } else {
@@ -32,9 +30,10 @@ public class MyHashMap<K, V> {
                     collisionTest = collisionTest.next;
                 }
             } while (collisionTest != null);
-            Node<K, V> el = new Node<>(key, value, hash, null);
-            tail.next = el;
+            Node<K, V> el = new Node<>(key, value, null);
             tail = el;
+            arr[index].next = tail;
+            tail = null;
             collSize++;
 
         }
@@ -58,19 +57,32 @@ public class MyHashMap<K, V> {
     void remove(K key) {
         int index = getIndex(key);
         Node toRemove = arr[index];
-        System.out.println(arr[index].value);
-        System.out.println(index);
         if (toRemove.next == null & toRemove.key.equals(key)) {
             toRemove.key = null;
             toRemove.value = null;
         } else {
-
+            while (toRemove != null) {
+                if (toRemove.key.equals(key)) {
+                    toRemove.key = null;
+                    toRemove.value = null;
+                    if (toRemove.next != null) {
+                        toRemove.key = toRemove.next.key;
+                        toRemove.value = toRemove.next.value;
+                        toRemove.next = toRemove.next.next;
+                    }
+                }
+                toRemove = toRemove.next;
+            }
         }
         collSize--;
     }
 
+    public int size() {
+        return collSize;
+    }
+
     public void print() {
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < arrsize; i++) {
             System.out.print("{");
             if (arr[i] != null) {
                 pr = arr[i];
@@ -90,23 +102,18 @@ public class MyHashMap<K, V> {
     }
 
     private int getIndex(K key) {
-        int hash = Objects.hashCode(key);
-        hash ^= (Objects.hashCode(key) >>> 20) ^ (Objects.hashCode(key) >>> 12);
-        hash ^= (hash >>> 7) ^ (hash >>> 4);
-        int index = hash & (size - 1);
-        return index;
+
+        return key.hashCode() % arrsize;
     }
 
     static class Node<K, V> {
         K key;
         V value;
-        int hash;
         Node<K, V> next;
 
-        public Node(K key, V value, int hash, Node<K, V> next) {
+        public Node(K key, V value, Node<K, V> next) {
             this.key = key;
             this.value = value;
-            this.hash = hash;
             this.next = next;
         }
     }

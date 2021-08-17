@@ -25,12 +25,14 @@ public class MyQueue<T> {
         this.elements = Arrays.copyOf(elements, size() - 1);
         current--;
     }
-    public T poll(){
+
+    public T poll() {
         Object temp = elements[0];
         remove(0);
         return (T) temp;
     }
-    public T peek(){
+
+    public T peek() {
         return elements[0];
     }
 

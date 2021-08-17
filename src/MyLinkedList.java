@@ -35,9 +35,7 @@ public class MyLinkedList<T> {
                 }
                 current = current.next;
             }
-
         }
-
     }
 
     T get(int index) {

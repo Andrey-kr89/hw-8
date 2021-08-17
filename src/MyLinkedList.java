@@ -1,10 +1,5 @@
 public class MyLinkedList<T> {
 
-    //    add(Object value) добавляет элемент в конец
-//    remove(int index) удаляет элемент под индексом
-//    clear() очищает коллекцию
-//    size() возвращает размер коллекции
-//    get(int index) возвращает элемент под индексом
     private int listSize = 0;
     private Node<T> first;
     private Node<T> last;
@@ -39,7 +34,9 @@ public class MyLinkedList<T> {
             listSize--;
             for (int i = 0; i <= index & current.next != null; i++) {
                 if (i == index - 1) {
+
                     current.next = current.next.next;
+                    current.next.previous = current;
                 }
                 current = current.next;
             }
@@ -58,7 +55,6 @@ public class MyLinkedList<T> {
             System.out.println("List is empty");
         }
         return x.value;
-
     }
 
     void clear() {
@@ -69,7 +65,6 @@ public class MyLinkedList<T> {
     int size() {
         return listSize;
     }
-
 
     void print() {
         if (first != null) {
@@ -95,10 +90,7 @@ public class MyLinkedList<T> {
             this.value = value;
             this.next = next;
             this.previous = previous;
-            ;
         }
-
-
     }
 }
 

@@ -4,10 +4,6 @@ public class MyLinkedList<T> {
     private Node<T> first;
     private Node<T> last;
 
-    public MyLinkedList() {
-
-    }
-
     void add(T value) {
         Node<T> l = last;
         Node<T> newNode = new Node<>(l, value, null);
@@ -34,7 +30,6 @@ public class MyLinkedList<T> {
             listSize--;
             for (int i = 0; i <= index & current.next != null; i++) {
                 if (i == index - 1) {
-
                     current.next = current.next.next;
                     current.next.previous = current;
                 }
@@ -47,7 +42,7 @@ public class MyLinkedList<T> {
 
     T get(int index) {
         Node<T> x = first;
-        if (first.next != null ) {
+        if (first.next != null) {
             for (int i = 0; i < index & first.next != null; i++) {
                 x = x.next;
             }
@@ -73,7 +68,6 @@ public class MyLinkedList<T> {
             while (x.next != null) {
                 x = x.next;
                 System.out.print(x.value + ", ");
-
             }
             System.out.println();
         } else {
@@ -81,7 +75,7 @@ public class MyLinkedList<T> {
         }
     }
 
-   static class Node<T> {
+    static class Node<T> {
         T value;
         Node<T> next;
         Node<T> previous;

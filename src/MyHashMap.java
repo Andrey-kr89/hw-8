@@ -1,16 +1,13 @@
-import java.util.HashMap;
-import java.util.Objects;
-
 public class MyHashMap<K, V> {
     private final Node[] arr;
 
     private Node<K, V> tail;
     private Node<K, V> pr;
-    private final int arrsize = 8;
+    private final int arrSize = 8;
     private int collSize = 0;
 
     public MyHashMap() {
-        arr = new Node[arrsize];
+        arr = new Node[arrSize];
     }
 
     void put(K key, V value) {
@@ -80,14 +77,16 @@ public class MyHashMap<K, V> {
     public int size() {
         return collSize;
     }
+
     public void clear() {
         for (int i = 0; i < collSize; i++) {
             arr[i] = null;
-        };
+        }
+        ;
     }
 
     public void print() {
-        for (int i = 0; i < arrsize; i++) {
+        for (int i = 0; i < arrSize; i++) {
             System.out.print("{");
             if (arr[i] != null) {
                 pr = arr[i];
@@ -98,7 +97,6 @@ public class MyHashMap<K, V> {
                         System.out.print("}");
                         System.out.print("   ");
                     }
-                    ;
                 } while (pr != null);
             } else System.out.print("Null }  ");
 
@@ -107,8 +105,7 @@ public class MyHashMap<K, V> {
     }
 
     private int getIndex(K key) {
-
-        return key.hashCode() % arrsize;
+        return key.hashCode() % arrSize;
     }
 
     static class Node<K, V> {
